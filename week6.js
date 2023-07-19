@@ -21,7 +21,7 @@ class Deck {
                 this.deck.push(new Card(this.suits[s],this.ranks[i], this.faceValues[i]))
             }
         }
-        return this.deck;
+        
     }
 
 
@@ -41,23 +41,21 @@ class Deck {
 
     playCards() {
         for (let i = 0; i < 26; i++) {
-            console.log(`${player1.name}'s card is: ${player1.hand[i].faceValue}${player1.hand[i].suit}
-${player2.name}'s card is: ${player2.hand[i].faceValue}${player2.hand[i].suit}`);
+            console.log(`${player1.name}'s card is: ${player1.hand[i].faceValue}${player1.hand[i].suit}\n${player2.name}'s card is: ${player2.hand[i].faceValue}${player2.hand[i].suit}`);
             
             if (player1.hand[i].rank > player2.hand[i].rank) {
                 player1.score += 1;
-                console.log (`${player1.name} wins the round. Current score is ${player1.score} to ${player2.score}`);
+                console.log (`${player1.name} wins the round. Current score is ${player1.name}:${player1.score} to ${player2.name}:${player2.score}`);
             } else if (player1.hand[i].rank < player2.hand[i].rank) {
                 player2.score += 1;                
-                console.log (`${player2.name} wins the round. Current score is ${player1.score} to ${player2.score}`);
+                console.log (`${player2.name} wins the round. Current score is ${player1.name}:${player1.score} to ${player2.name}:${player2.score}`);
             }else {
-                console.log (`Tie!`)
+                console.log (`Tie! Current score is ${player1.name}:${player1.score} to ${player2.name}:${player2.score}`)
             }
     
         }
 
-         console.log(`Final Scores: ${player1.name}: ${player1.score}
-        ${player2.name}: ${player2.score}`);
+         console.log(`Final Scores:\n${player1.name}: ${player1.score}\n${player2.name}: ${player2.score}`);
 
         if (player1.score > player2.score) {
             console.log( `${player1.name} wins!`);
@@ -79,23 +77,23 @@ class Player {
         this.score = 0;
     }
     
-   
 
-    describe(){
-        return `${this.name} score is ${this.score}`
-    }
 }
-// player1 = new Player(prompt('What is your name player 1?'));
-// player2 = new Player(prompt(`What is your name player 2?`))
+
+
+
+function start() {    
+    
+    const deck = new Deck();
+    deck.newDeck();
+    deck.shuffleDeck();
+    deck.deal();
+    deck.playCards(); 
+        
+}
+
 let player1 = new Player(prompt('What is your name player 1?'));
-let player2 = new Player(prompt(`What is your name player 2?`));
-let deck = new Deck();
-deck.newDeck();
-console.log(deck);
-deck.shuffleDeck();
-deck.deal();
-console.log(player1.hand);
-console.log(player2.hand);
-deck.playCards();
+let player2 = new Player(prompt('What is your name player 2?'));
+start();
 
 
