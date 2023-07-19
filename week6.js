@@ -12,6 +12,7 @@ class Deck {
         this.suits = ["♠", "♣", "♥", "♦"];
         this.ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
         this.faceValues = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"];
+        
     }
 
     newDeck() {
@@ -58,10 +59,10 @@ class Deck {
          console.log(`Final Scores:\n${player1.name}: ${player1.score}\n${player2.name}: ${player2.score}`);
 
         if (player1.score > player2.score) {
-            console.log( `${player1.name} wins!`);
+            console.log( `${player1.name} is the victor. Rest in peace ${player2.name}.`);
         } else if (player1.score < player2.score) {
             
-            console.log(`${player2.name} wins!`);
+            console.log(`${player2.name} is the victor. Rest in peace ${player1.name}.`);
         }
 
     };
@@ -71,29 +72,25 @@ class Deck {
 
 
 class Player {
-    constructor (name){
+    constructor(name){
         this.name = name;
         this.hand = [];
         this.score = 0;
-    }
-    
-
+    }   
 }
 
 
 
-function start() {    
-    
+function start() {        
     const deck = new Deck();
     deck.newDeck();
     deck.shuffleDeck();
     deck.deal();
     deck.playCards(); 
-        
 }
-
-let player1 = new Player(prompt('What is your name player 1?'));
-let player2 = new Player(prompt('What is your name player 2?'));
+alert (`Welcome to the Bleeding Place. Two enter, only one may leave.`)
+let player1 = new Player(prompt('Welcome to the arena. What is your name warrior?'));
+let player2 = new Player(prompt('A brave challenger emerges. Name yourself:'));
 start();
 
 
