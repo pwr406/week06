@@ -12,6 +12,8 @@ describe("Check deal method", function(){
         
         
     })
+
+    //checking the hand length two different ways.
     expect(player1.hand).to.have.lengthOf(26)
         expect(player2.hand.length).to.equal(26);
 })
